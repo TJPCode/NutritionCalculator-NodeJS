@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Title of the document</title> 
+    </head>
+    
+    <body>
+
+        <form action="/" method="POST">
+            First name:<br>
+            <input type="text" name="search">
+            <input type="submit" value="Submit">
+        </form>
+
+        <select size="10" id="foodlist" onchange="foodSelected('<%= JSON.stringify(JsonRavinnot) %>')">
+            <% if (typeof JsonRavinnot == 'object' && JsonRavinnot) { %>
+                <% for (var item of JsonRavinnot) {%>
+                    <option value='<%-item.id%>' ><%= item.name %></option>
+                <% } %>
+            <% } %>
+        </select>
+        
+        <br><br>
+        <br><br>
+        <div class="printed-food">
+            ID: <input type="text" id="foodid">
+            <br>
+            NAME: <input type="text" id="foodname">
+            <br>
+            Kcal: <input type="text" id="foodkcal">
+        </div>
+
+
+        <script src="client.js"></script> 
+    </body>
+</html> 

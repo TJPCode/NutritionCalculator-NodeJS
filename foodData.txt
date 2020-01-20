@@ -1,0 +1,19 @@
+{
+    "JsonRavinnot": [
+        {
+            "id": 1,
+            "name": "omenapiiras",
+            "kcal": 123
+        },
+        {
+            "id": 2,
+            "name": " keräkaali",
+            "kcal": 456
+        },
+        {
+            "id": 3,
+            "name": " sinappi",
+            "kcal": 789
+        }
+    ]
+}
