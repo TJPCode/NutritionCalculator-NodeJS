@@ -16,7 +16,7 @@ console.log("Server running on http://127.0.0.1:3000/");
 
 app.get('/', function (req, res) {
     var data = handler.getAllFoods();
-    console.log(data);
+    //console.log(data);
     res.render('nutritionCalculator',data);
 });
 
@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 app.post('/', urlencodedParser, function (req, res) {
     
     var data = handler.searchFood(req.body.search);
-    console.log(data);
+    //console.log(data);
     res.render('nutritionCalculator', data);  
 })
 

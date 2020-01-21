@@ -1,0 +1,353 @@
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+}
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.col {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-height: 1px;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width: 220px;
+  padding: 5px;
+  margin: 5px;
+}
+
+textarea {
+  outline: none;
+  width: 200px;
+}
+
+
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  background: linear-gradient(to right, rgba(7,0,50,1) 0%,rgba(0,70,192,1) 50%,rgba(7,0,50,1) 100%);
+  margin: 0;
+  font-family: Arial;
+  color: #fff;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+  margin: 20px auto 0 auto;
+   color: white;
+   max-width: 100%;
+   max-height: 100%;
+}
+
+.container{
+   max-width: 1000px;
+   margin: 0 auto 0 auto;
+}
+
+/******* NAVIGATION *******/
+
+ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   margin: 0 0 5px 0;
+   height: 50px; 
+}
+
+li {
+   float: left;
+}
+
+li a {
+   font-weight: bold;
+   font-size: 14px;
+   display: block;
+   color: #1b32a2;
+   text-align: center;
+   padding: 17px 10px;
+   text-decoration: none;
+}
+
+li a:hover {
+   color: #d20535;
+}
+
+.navbar-inverse {
+   background: -webkit-linear-gradient(#c0c0c0, #fff); /* For Safari 5.1 to 6.0 */
+   background: -o-linear-gradient(#c0c0c0, #fff); /* For Opera 11.1 to 12.0 */
+   background: -moz-linear-gradient(#c0c0c0, #fff); /* For Firefox 3.6 to 15 */
+   background: linear-gradient(#c0c0c0, #fff); /* Standard syntax */
+   border-color: black;
+   color: white;
+   box-shadow: 0 5px 10px #333;
+   height: 50px;
+   margin-bottom: 30px;
+}
+
+.navbar-left{
+   width: 70%;
+   float: left;
+}
+
+.navbar-right{
+   width: 30%;
+   float: right;
+}
+
+#banner-fade,
+#banner-slide{
+ margin-bottom: 10px;
+}
+
+/******* COMMON *******/
+
+h2{
+   color: white;
+   font-weight: 500;
+}
+
+h6{
+   margin: 0px;
+   font-size: 0.8em;
+}
+
+hr{
+   margin-top: 15px;   
+   box-shadow: 0 1px 1px #000;
+}
+
+.float-left{
+   float: left;
+}
+.float-right{
+   float: right;
+}
+
+#search-result-text{
+   width: 40%;
+   float: right;
+   font-size: 15px;
+   text-align: right;
+}
+
+.error-text{
+   color: red;
+}
+
+#footer{
+   text-align: center;
+   margin-top: 10px;
+}
+
+/******* TABLE *******/
+
+table {
+   border-collapse: separate;
+   border-spacing: 2px;
+   width: 100%;
+}
+
+tbody{
+   display: table-row-group;
+   vertical-align: middle;        
+}
+
+#matches-table{
+   width: 100%;
+   margin: 15px auto;
+}
+
+.match-table-header{
+   background: -webkit-linear-gradient(#c3c3c3, #fff); /* For Safari 5.1 to 6.0 */
+   background: -o-linear-gradient(#c3c3c3, #fff); /* For Opera 11.1 to 12.0 */
+   background: -moz-linear-gradient(#c3c3c3, #fff); /* For Firefox 3.6 to 15 */
+   background: linear-gradient(#c3c3c3, #fff); /* Standard syntax */
+   text-align: center;
+   color: #1e59b6;
+   border-radius: 2px; 
+   font-size: 14px;
+   font-weight: 600;
+   padding: 3px;
+   box-shadow: inset 0px -2px 2px rgba(0,0,0,0.8);
+}
+
+.match-table-data{
+   text-align: center;
+   background: linear-gradient(to right, rgba(0,0,0,0.35) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.35) 100%);
+   color: white;
+   border-radius: 2px; 
+   padding: 2px;   
+   box-shadow: 0 1px 0px #000;
+   font-size: 13px;
+}
+
+.header1{
+   width: 15%;
+}
+
+.header2{
+   width: 15%;
+}
+
+.header3{
+   width: 40%;
+}
+
+.header4{
+   width: 20%;
+}
+
+.header5{
+   width: 10%;
+}
+
+
+.details-header-1{
+   width: 40%;
+   font-size: 22px;
+}
+.details-header-2{
+   width: 10%;
+   font-size: 22px;
+}
+
+.details-header-3{
+   width: 5%;
+}
+
+
+.lg-table-rank{
+   width: 4%;
+}
+
+.lg-table-team{
+   width: 28%;
+}
+
+.lg-table-number{
+   width: 8%;
+}
+
+.lg-table-points{
+   width: 12%;
+}
+
+.lg-table-elimination{
+   background: -webkit-linear-gradient(#690000, #c00);
+   background: -o-linear-gradient(#690000, #c00);
+   background: -moz-linear-gradient(#690000, #c00);
+   background: linear-gradient(#690000, #c00);
+   box-shadow: inset 0px -2px 2px rgba(0,0,0,0.8);
+}
+
+
+/******* INPUTS *******/
+
+input[type="text"],
+input[type="password"] {
+   max-width: 280px;
+   width: 200px;
+   color: #333;
+   border-radius: 2px;
+   box-shadow: 0 1px 1px #333;
+}
+
+input, button, select, textarea {
+   color: black;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+   background: -webkit-linear-gradient(#c3c3c3, #ccc); /* For Safari 5.1 to 6.0 */
+   background: -o-linear-gradient(#c3c3c3, #ccc); /* For Opera 11.1 to 12.0 */
+   background: -moz-linear-gradient(#c3c3c3, #ccc); /* For Firefox 3.6 to 15 */
+   background: linear-gradient(#c3c3c3, #ccc); /* Standard syntax */
+   border: 1px solid #333;
+   color: black;
+   padding: 3px 20px;
+   text-align: center;
+   font-size: 12px;
+   border-radius: 2px;
+   box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,1), 0 1px 3px #333;
+   text-shadow: 1px 1px 1px #999;
+}
+
+button:disabled, html input[type="button"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled {
+   color: #979797;
+}
+
+form {
+   height: 30px;
+   width: 60%;
+   margin: 0;
+   float: left;
+}
+
+#leaguetable-form {
+   height: 100%;
+   width: 100%;
+   margin: 0;
+   float: left;
+}
+
+#date-form{
+   margin: 0 0 10px 0;
+   width: 100%;
+   float: left;
+}
+
+#date-picker{
+   min-width: 33%;
+   float: left;
+}
+
+.text-box{
+   width: 100%;
+   border: none;
+   color: white !important;
+   background-color: transparent;
+   text-align: center;
+   box-shadow: none !important;
+}
+
+.update-btn{
+   float:right;
+   margin-bottom: 10px;
+}
+
+
+/**** League table validation ****/
+.field-validation-error {
+   color: #ff0500;
+}
+
+.field-validation-valid {
+   display: none;
+}
+
+input.input-validation-error {
+   border: 1px solid #ff0500;
+}
+
+input[type="checkbox"].input-validation-error {
+   border: 0 none;
+}
+
+.validation-summary-errors {
+   color: #b94a48;
+}
+
+.validation-summary-valid {
+   display: none;
+}

@@ -1,10 +1,10 @@
 
-const fileName = 'foodData.txt';
+const fileName = 'newFoodData.txt';
 const fs = require('fs')
 const data = fs.readFileSync(fileName) 
 const json = JSON.parse(data)
 
-const nutritions = json.JsonRavinnot
+const nutritions = json.foods
 
 //Get all foods.
 function getAllFoods(){
@@ -34,7 +34,7 @@ var addFood = function(newFood){
     }
 
     //add new object to json array
-    json.JsonRavinnot.push(foodObject)
+    json.foods.push(foodObject)
 
     fs.writeFile(fileName, JSON.stringify(json, null, 4), function (err) {  
         if (err) {
@@ -55,7 +55,7 @@ function updateFood (foodString){
     var newName = foodString[1]
     var updated = false;
 
-    json.JsonRavinnot.forEach(element => {
+    json.foods.forEach(element => {
         //console.log(element);
 
         if (element.id == foodId) {

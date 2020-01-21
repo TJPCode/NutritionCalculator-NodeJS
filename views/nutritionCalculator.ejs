@@ -1,35 +1,138 @@
 <html>
     <head>
-        <title>Title of the document</title> 
+        <title>Nutrition calculator</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
-    
     <body>
+        <div class="container">
+            
+            <!--Vasen lohko-->
+            <div class="col column">
+                <div class="food-list1">
+                    <% if (typeof foods == 'object' && foods) { %>
+                        <select class="custom-select" size="10" id="foodlist1" ondblclick="selectAndCalculate('<%= JSON.stringify(foods) %>', this.id)" onclick="foodSelected('<%= JSON.stringify(foods) %>', this.id)">           
+                            <% for (var item of foods) {
+                                if (item.category == 1) { %>
+                                <option value='<%-item.id%>'><%= item.name %></option>
+                            <% }} %>
+                        </select>
+                    <% } %>
+                </div>
 
-        <form action="/" method="POST">
-            First name:<br>
-            <input type="text" name="search">
-            <input type="submit" value="Submit">
-        </form>
+                <div class="food-list2">
+                    <% if (typeof foods == 'object' && foods) { %>
+                        <select class="custom-select"  size="10" id="foodlist2" ondblclick="selectAndCalculate('<%= JSON.stringify(foods) %>', this.id)"  onclick="foodSelected('<%= JSON.stringify(foods) %>', this.id)">           
+                                <% for (var item of foods) {
+                                    if (item.category == 2) { %>
+                                    <option value='<%-item.id%>'><%= item.name %></option>
+                                <% }} %>
+                                <option value='x'>placeholder</option>
+                        </select>
+                    <% } %>
+                </div>
 
-        <select size="10" id="foodlist" onchange="foodSelected('<%= JSON.stringify(JsonRavinnot) %>')">
-            <% if (typeof JsonRavinnot == 'object' && JsonRavinnot) { %>
-                <% for (var item of JsonRavinnot) {%>
-                    <option value='<%-item.id%>' ><%= item.name %></option>
-                <% } %>
-            <% } %>
-        </select>
-        
-        <br><br>
-        <br><br>
-        <div class="printed-food">
-            ID: <input type="text" id="foodid">
-            <br>
-            NAME: <input type="text" id="foodname">
-            <br>
-            Kcal: <input type="text" id="foodkcal">
+                <div class="food-list3">
+                    <% if (typeof foods == 'object' && foods) { %>
+                        <select class="custom-select" size="10" id="foodlist3" ondblclick="selectAndCalculate('<%= JSON.stringify(foods) %>', this.id)"  onclick="foodSelected('<%= JSON.stringify(foods) %>', this.id)">           
+                            <% for (var item of foods) {
+                                if (item.category == 3) { %>
+                                <option value='<%-item.id%>'><%= item.name %></option>
+                            <% }} %>
+                            <option value='x'>placeholder</option>
+                        </select>
+                    <% } %>
+                </div>                
+            </div>
+
+            <!--keskilohko-->
+            <div class="col column">
+                <div class="printed-food">
+                    <table>
+                        <tr>
+                            <td>ID:</td>
+                            <td><input type="text" id="foodid" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" id="foodname"></td>
+                        </tr>
+                        <tr>
+                            <td>Kcal:</td>
+                            <td><input type="text" id="foodkcal"></td>
+                        </tr>
+                        <tr>
+                            <td>Protein:</td>
+                            <td><input type="text" id="foodprot"></td>
+                        </tr>
+                        <tr>
+                            <td>Carbs:</td>
+                            <td><input type="text" id="foodcarbs"></td>
+                        </tr>
+                        <tr>
+                            <td>Fat:</td>
+                            <td><input type="text" id="foodfat"></td>
+                        </tr>
+                        <tr>
+                            <td>Saturated fat:</td>
+                            <td><input type="text" id="foodsfat"></td>
+                        </tr>
+                        <tr>
+                            <td>Category:</td>
+                            <td><input type="text" id="foodcategory"></td>
+                        </tr>
+                        <tr>
+                            <td>Info:</td>
+                            <td><textarea id="foodinfo" rows="4" cols="25"></textarea></td>
+                        </tr>
+                    </table>
+                    
+                </div>       
+            </div>
+
+            <!--oikea lohko-->
+            <div class="col column">
+                <div class="printed-food">
+                    <table>
+                        <tr>
+                            <td>Kcal:</td>
+                            <td><input type="text" value="0" id="totkcal"></td>
+                        </tr>
+                        <tr>
+                            <td>Protein:</td>
+                            <td><input type="text" value="0" id="totprot"></td>
+                        </tr>
+                        <tr>
+                            <td>Carbs:</td>
+                            <td><input type="text" value="0" id="totcarb"></td>
+                        </tr>
+                        <tr>
+                            <td>Fat:</td>
+                            <td><input type="text" value="0" id="totfat"></td>
+                        </tr>
+                        <tr>
+                            <td>Saturated fat:</td>
+                            <td><input type="text" value="0" id="totsfat"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button onclick="reset()">Reset</button></td>
+                        </tr>
+                        
+                    </table>               
+                </div>
+
+
+
+<br><br><br><br>
+                <div class="search-form">
+                    <form action="/" method="POST">
+                        Search:<br>
+                        <input type="text" name="search">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>  
+            </div>
         </div>
-
-
         <script src="client.js"></script> 
     </body>
 </html> 

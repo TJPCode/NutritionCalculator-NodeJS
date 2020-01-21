@@ -1,0 +1,48 @@
+{
+    "foods": [
+        {
+            "id":1,
+            "name":"Taikaruis 2x + lisukkeet",
+            "kcal":254,
+            "prots":11,
+            "carbs":26,
+            "fat":9,
+            "sfat":2,
+            "category":1,
+            "info":"Becel, lauantaimakkara, juusto"
+        },
+        {
+            "id":2,
+            "name":"Täysjyväpaahto 2x + lisuk",
+            "kcal":214,
+            "prots":8,
+            "carbs":22,
+            "fat":10,
+            "sfat":3,
+            "category":1,
+            "info":"Becel, lauantaimakkara, juusto"
+        },
+        {
+            "id": 3,
+            "name":"Kahvi maidolla 2,5dl",
+            "kcal":17,
+            "prots":1,
+            "carbs":2,
+            "fat":0,
+            "sfat":0,
+            "category":2,
+            "info":" "
+        },
+		{
+            "id": 4,
+            "name":"Sinappi",
+            "kcal":17,
+            "prots":2,
+            "carbs":4,
+            "fat":0,
+            "sfat":0,
+            "category":3,
+            "info":" "
+        }
+    ]
+}
