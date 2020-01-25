@@ -1,7 +1,9 @@
 /* Create two equal columns that floats next to each other */
 .column {
     float: left;
-    width: 33.33%;
+    width: 30%;
+    padding: 10px;
+    height: 750px;
 }
   
   /* Clear floats after the columns */
@@ -22,7 +24,6 @@
   font-family: Arial;
   width: 220px;
   padding: 5px;
-  margin: 5px;
 }
 
 textarea {
@@ -30,9 +31,18 @@ textarea {
   width: 200px;
 }
 
+.macroinput {
+  width: 50px !important;
+}
 
-
-
+.macro-table-label-td {
+  min-width: 35%;
+}
+/*
+div {
+   border: 1px solid #c3c3c3;
+ }
+*/
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   background: linear-gradient(to right, rgba(7,0,50,1) 0%,rgba(0,70,192,1) 50%,rgba(7,0,50,1) 100%);
@@ -51,8 +61,15 @@ body {
 }
 
 .container{
-   max-width: 1000px;
+   max-width: 1200px;
    margin: 0 auto 0 auto;
+   padding-top: 10px;
+}
+
+.container-search{
+   max-width: 500px;
+   margin: 0 auto 0 auto;
+   padding-top: 10px;
 }
 
 /******* NAVIGATION *******/
@@ -93,29 +110,25 @@ li a:hover {
    color: white;
    box-shadow: 0 5px 10px #333;
    height: 50px;
-   margin-bottom: 30px;
-}
-
-.navbar-left{
-   width: 70%;
-   float: left;
-}
-
-.navbar-right{
-   width: 30%;
-   float: right;
-}
-
-#banner-fade,
-#banner-slide{
- margin-bottom: 10px;
+   
 }
 
 /******* COMMON *******/
 
+h1{
+   color: #000;
+   font-weight: 700;
+   margin: 0;
+}
+
 h2{
    color: white;
    font-weight: 500;
+}
+
+h5{
+   margin: 3px;
+   font-size: 0.8em;
 }
 
 h6{
@@ -164,11 +177,6 @@ tbody{
    vertical-align: middle;        
 }
 
-#matches-table{
-   width: 100%;
-   margin: 15px auto;
-}
-
 .match-table-header{
    background: -webkit-linear-gradient(#c3c3c3, #fff); /* For Safari 5.1 to 6.0 */
    background: -o-linear-gradient(#c3c3c3, #fff); /* For Opera 11.1 to 12.0 */
@@ -211,37 +219,6 @@ tbody{
 
 .header5{
    width: 10%;
-}
-
-
-.details-header-1{
-   width: 40%;
-   font-size: 22px;
-}
-.details-header-2{
-   width: 10%;
-   font-size: 22px;
-}
-
-.details-header-3{
-   width: 5%;
-}
-
-
-.lg-table-rank{
-   width: 4%;
-}
-
-.lg-table-team{
-   width: 28%;
-}
-
-.lg-table-number{
-   width: 8%;
-}
-
-.lg-table-points{
-   width: 12%;
 }
 
 .lg-table-elimination{

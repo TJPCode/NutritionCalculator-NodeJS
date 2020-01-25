@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Nutrition calculator - search results</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="navbar-inverse">
+            <div class="container-search">
+                <center><h1>Search results</h1></center>
+            </div>        
+        </div>
+        <div class="container-search">
+
+            <% if (typeof result == 'object' && result) { %>
+                <center><h2><%- result.message %></h2></center>
+            <% }%>
+
+            <% if (typeof result.food == 'object' && result.food) { %>
+                <%- include('partials/searched.ejs', result.food);%>
+            <% }%>
+            
+        </div>
+        <script src="client.js"></script>
+        <script src="/reload/reload.js"></script>
+    </body>
+</html> 

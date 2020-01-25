@@ -17,9 +17,10 @@ var searchFood = function(answer){
     for(var foodItem in nutritions) {
 
         if (nutritions[foodItem].name.toLowerCase() ==  answer.toLowerCase()){
-            return nutritions[foodItem];           
+            return {message: "Food found.", food: nutritions[foodItem]};
         }
     }
+    return {message: "Food not found."};
 }
 
 //Add new food item

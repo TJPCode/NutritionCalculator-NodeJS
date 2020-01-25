@@ -8,7 +8,7 @@
             "carbs":26,
             "fat":9,
             "sfat":2,
-            "category":1,
+            "category":0,
             "info":"Becel, lauantaimakkara, juusto"
         },
         {
@@ -19,7 +19,7 @@
             "carbs":22,
             "fat":10,
             "sfat":3,
-            "category":1,
+            "category":0,
             "info":"Becel, lauantaimakkara, juusto"
         },
         {
@@ -30,7 +30,7 @@
             "carbs":2,
             "fat":0,
             "sfat":0,
-            "category":2,
+            "category":1,
             "info":" "
         },
 		{
@@ -41,7 +41,7 @@
             "carbs":4,
             "fat":0,
             "sfat":0,
-            "category":3,
+            "category":2,
             "info":" "
         }
     ]

@@ -4,135 +4,161 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+ 
+        <% 
+        var foodData = null;
+        if (typeof foods == 'object' && foods) {  
+            foodData = JSON.stringify(foods);
+        }%>
+        <div class="navbar-inverse">
+            <div class="container">
+                <center><h1>Nutrition calculator</h1></center>
+            </div>        
+        </div>
         <div class="container">
             
             <!--Vasen lohko-->
+
             <div class="col column">
+    
                 <div class="food-list1">
+                    <h5>Foods</h5>
                     <% if (typeof foods == 'object' && foods) { %>
-                        <select class="custom-select" size="10" id="foodlist1" ondblclick="selectAndCalculate('<%= JSON.stringify(foods) %>', this.id)" onclick="foodSelected('<%= JSON.stringify(foods) %>', this.id)">           
+                        <select class="custom-select" size="10" id="foodlist1" ondblclick="selectAndCalculate('<%= foodData %>', this.id)" onclick="foodSelected('<%= foodData %>', this.id)">           
                             <% for (var item of foods) {
-                                if (item.category == 1) { %>
+                                if (item.category == 0) { %>
                                 <option value='<%-item.id%>'><%= item.name %></option>
-                            <% }} %>
+                            <%}}%>
                         </select>
-                    <% } %>
+                    <%}%>
                 </div>
-
+            
                 <div class="food-list2">
+                    <h5>Drinks</h5>
                     <% if (typeof foods == 'object' && foods) { %>
-                        <select class="custom-select"  size="10" id="foodlist2" ondblclick="selectAndCalculate('<%= JSON.stringify(foods) %>', this.id)"  onclick="foodSelected('<%= JSON.stringify(foods) %>', this.id)">           
+                        <select class="custom-select" size="10" id="foodlist2" ondblclick="selectAndCalculate('<%= foodData %>', this.id)"  onclick="foodSelected('<%= foodData %>', this.id)">           
                                 <% for (var item of foods) {
-                                    if (item.category == 2) { %>
+                                    if (item.category == 1) { %>
                                     <option value='<%-item.id%>'><%= item.name %></option>
-                                <% }} %>
-                                <option value='x'>placeholder</option>
+                                <%}}%>
                         </select>
-                    <% } %>
+                    <%}%>
+                </div>
+            
+                <div class="food-list3">
+                    <h5>Other</h5>
+                    <% if (typeof foods == 'object' && foods) { %>
+                        <select class="custom-select" size="10" id="foodlist3" ondblclick="selectAndCalculate('<%= foodData %>', this.id)"  onclick="foodSelected('<%= foodData %>', this.id)">           
+                            <% for (var item of foods) {
+                                if (item.category == 2) { %>
+                                <option value='<%-item.id%>'><%= item.name %></option>
+                            <%}}%>
+                        </select>
+                    <%}%>
                 </div>
 
-                <div class="food-list3">
-                    <% if (typeof foods == 'object' && foods) { %>
-                        <select class="custom-select" size="10" id="foodlist3" ondblclick="selectAndCalculate('<%= JSON.stringify(foods) %>', this.id)"  onclick="foodSelected('<%= JSON.stringify(foods) %>', this.id)">           
-                            <% for (var item of foods) {
-                                if (item.category == 3) { %>
-                                <option value='<%-item.id%>'><%= item.name %></option>
-                            <% }} %>
-                            <option value='x'>placeholder</option>
-                        </select>
-                    <% } %>
-                </div>                
+                <div class="search-form">
+                    <h5>Search</h5>
+                    <form name="searchForm" action="/search" method="GET" onsubmit="return validateSearchForm()">
+                        <input type="text" name="search" required>
+                        <input type="submit" value="Submit">
+                    </form>                   
+                </div>
             </div>
 
             <!--keskilohko-->
             <div class="col column">
-                <div class="printed-food">
-                    <table>
+                <form name="addhForm" action="/add" method="POST">
+                    <table border="1">
                         <tr>
                             <td>ID:</td>
-                            <td><input type="text" id="foodid" readonly></td>
+                            <td><input class="macroinput" type="text" id="foodid" disabled></td>
                         </tr>
                         <tr>
                             <td>Name:</td>
-                            <td><input type="text" id="foodname"></td>
+                            <td><input type="text" id="foodname" required></td>
                         </tr>
                         <tr>
                             <td>Kcal:</td>
-                            <td><input type="text" id="foodkcal"></td>
+                            <td><input class="macroinput" type="text" id="foodkcal" required> kcal</td>
                         </tr>
                         <tr>
                             <td>Protein:</td>
-                            <td><input type="text" id="foodprot"></td>
+                            <td><input class="macroinput" type="text" id="foodprot" pattern="[0-9]{1,3}" required> g</td>
                         </tr>
                         <tr>
                             <td>Carbs:</td>
-                            <td><input type="text" id="foodcarbs"></td>
+                            <td><input class="macroinput" type="text" id="foodcarbs" pattern="[0-9]{1,3}" required> g</td>
                         </tr>
                         <tr>
                             <td>Fat:</td>
-                            <td><input type="text" id="foodfat"></td>
+                            <td><input class="macroinput" type="text" id="foodfat" pattern="[0-9]{1,3}" required> g</td>
                         </tr>
                         <tr>
                             <td>Saturated fat:</td>
-                            <td><input type="text" id="foodsfat"></td>
+                            <td><input class="macroinput" type="text" id="foodsfat" pattern="[0-9]{1,3}" required> g</td>
                         </tr>
                         <tr>
                             <td>Category:</td>
-                            <td><input type="text" id="foodcategory"></td>
+                            <td>
+                                <select type="text" id="foodcategory">
+                                    <option>Ruoka</option>
+                                    <option>Juoma</option>
+                                    <option>Lisuke</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>Info:</td>
                             <td><textarea id="foodinfo" rows="4" cols="25"></textarea></td>
                         </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button type="reset" value="Reset" onclick="resetToAdd()">Add new</button>
+                                <input id="insertButton" disabled type="submit" value="Submit" onclick="insertFood()">
+                            </td>
+                        </tr>  
                     </table>
-                    
-                </div>       
+                </form>  
             </div>
 
             <!--oikea lohko-->
             <div class="col column">
-                <div class="printed-food">
-                    <table>
-                        <tr>
-                            <td>Kcal:</td>
-                            <td><input type="text" value="0" id="totkcal"></td>
-                        </tr>
-                        <tr>
-                            <td>Protein:</td>
-                            <td><input type="text" value="0" id="totprot"></td>
-                        </tr>
-                        <tr>
-                            <td>Carbs:</td>
-                            <td><input type="text" value="0" id="totcarb"></td>
-                        </tr>
-                        <tr>
-                            <td>Fat:</td>
-                            <td><input type="text" value="0" id="totfat"></td>
-                        </tr>
-                        <tr>
-                            <td>Saturated fat:</td>
-                            <td><input type="text" value="0" id="totsfat"></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><button onclick="reset()">Reset</button></td>
-                        </tr>
-                        
-                    </table>               
-                </div>
-
-
-
-<br><br><br><br>
-                <div class="search-form">
-                    <form action="/" method="POST">
-                        Search:<br>
-                        <input type="text" name="search">
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>  
+               
+                <table>
+                    <tr>
+                        <td class="macro-table-label-td">Calories:</td>
+                        <td><input class="macroinput" type="text" value="0" id="totkcal" disabled> kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Protein:</td>
+                        <td><input class="macroinput" type="text" value="0" id="totprot" disabled> g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbs:</td>
+                        <td><input class="macroinput" type="text" value="0" id="totcarb" disabled> g</td>
+                    </tr>
+                    <tr>
+                        <td>Fat:</td>
+                        <td><input class="macroinput" type="text" value="0" id="totfat" disabled> g</td>
+                    </tr>
+                    <tr>
+                        <td>Saturated fat:</td>
+                        <td><input class="macroinput" type="text" value="0" id="totsfat" disabled> g</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><select type="text" id="selectedfoods" class="custom-select" size="10" id="foodcategory" ondblclick="removeFromCalculated('<%= foodData %>', this)"></select></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button onclick="resetCalculated()">Reset</button></td>
+                    </tr>  
+                </table>               
+                             
             </div>
         </div>
-        <script src="client.js"></script> 
+        <script src="client.js"></script>
+        <script src="/reload/reload.js"></script>
     </body>
 </html> 
