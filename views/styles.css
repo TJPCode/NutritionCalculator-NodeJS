@@ -266,7 +266,6 @@ button:disabled, html input[type="button"]:disabled, input[type="reset"]:disable
 
 form {
    height: 30px;
-   width: 60%;
    margin: 0;
    float: left;
 }

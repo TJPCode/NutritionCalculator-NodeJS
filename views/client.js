@@ -44,7 +44,8 @@
                 document.getElementById("totcarb").value = parseInt(document.getElementById("totcarb").value) + parseInt(obj.carbs);
                 document.getElementById("totfat").value = parseInt(document.getElementById("totfat").value) + parseInt(obj.fat);
                 document.getElementById("totsfat").value = parseInt(document.getElementById("totsfat").value) + parseInt(obj.sfat);
-            
+                document.getElementById("deleteButton").disabled = false;
+                document.getElementById("updateButton").disabled = false;
                 var calculatedList = document.getElementById("selectedfoods");
                 var option = document.createElement("option");
                 option.text = obj.name;
@@ -59,47 +60,49 @@
 
  //Reset calculated sum data.
  function resetCalculated() {
-  document.getElementById("totkcal").value = 0;
-  document.getElementById("totprot").value = 0;
-  document.getElementById("totcarb").value = 0;
-  document.getElementById("totfat").value = 0;
-  document.getElementById("totsfat").value = 0;
-  document.getElementById("selectedfoods").options.length = 0;
+    document.getElementById("totkcal").value = 0;
+    document.getElementById("totprot").value = 0;
+    document.getElementById("totcarb").value = 0;
+    document.getElementById("totfat").value = 0;
+    document.getElementById("totsfat").value = 0;
+    document.getElementById("selectedfoods").options.length = 0;
  };
 
  //Reset calculated sum data.
  function resetToAdd() {
-  document.getElementById("foodid").value = "";
-  document.getElementById("foodname").value = "";
-  document.getElementById("foodkcal").value = "";
-  document.getElementById("foodprot").value = "";
-  document.getElementById("foodcarbs").value = "";
-  document.getElementById("foodfat").value = "";
-  document.getElementById("foodsfat").value = "";
-  document.getElementById("foodinfo").value = "";
-  document.getElementById("foodcategory").selectedIndex = 0;
-  document.getElementById("insertButton").disabled  = false;
+    document.getElementById("foodid").value = "";
+    document.getElementById("foodname").value = "";
+    document.getElementById("foodkcal").value = "";
+    document.getElementById("foodprot").value = "";
+    document.getElementById("foodcarbs").value = "";
+    document.getElementById("foodfat").value = "";
+    document.getElementById("foodsfat").value = "";
+    document.getElementById("foodinfo").value = "";
+    document.getElementById("foodcategory").selectedIndex = 0;
+    document.getElementById("insertButton").disabled = false;
+    document.getElementById("deleteButton").disabled = true;
+    document.getElementById("updateButton").disabled = true;
  };
 
  //Remove food from calculated list and recalculate sums.
  function removeFromCalculated(json, removableItem) {
  
-  var data = JSON.parse(json);
+    var data = JSON.parse(json);
 
-  if (data != 'undefined' && data) {
+    if (data != 'undefined' && data) {
 
-    for (obj of data) {
-      if (removableItem.value == obj.id){
-          document.getElementById("totkcal").value = parseInt(document.getElementById("totkcal").value) - parseInt(obj.kcal);
-          document.getElementById("totprot").value = parseInt(document.getElementById("totprot").value) - parseInt(obj.prots);
-          document.getElementById("totcarb").value = parseInt(document.getElementById("totcarb").value) - parseInt(obj.carbs);
-          document.getElementById("totfat").value = parseInt(document.getElementById("totfat").value) - parseInt(obj.fat);
-          document.getElementById("totsfat").value = parseInt(document.getElementById("totsfat").value) - parseInt(obj.sfat);            
-          
-          var calculatedList = document.getElementById("selectedfoods");
-          calculatedList.remove(removableItem.selectedIndex);
-          break;
-      }       
-    }  
-  }
+        for (obj of data) {
+            if (removableItem.value == obj.id){
+                document.getElementById("totkcal").value = parseInt(document.getElementById("totkcal").value) - parseInt(obj.kcal);
+                document.getElementById("totprot").value = parseInt(document.getElementById("totprot").value) - parseInt(obj.prots);
+                document.getElementById("totcarb").value = parseInt(document.getElementById("totcarb").value) - parseInt(obj.carbs);
+                document.getElementById("totfat").value = parseInt(document.getElementById("totfat").value) - parseInt(obj.fat);
+                document.getElementById("totsfat").value = parseInt(document.getElementById("totsfat").value) - parseInt(obj.sfat);            
+                
+                var calculatedList = document.getElementById("selectedfoods");
+                calculatedList.remove(removableItem.selectedIndex);
+                break;
+            }       
+        }  
+    }
 };

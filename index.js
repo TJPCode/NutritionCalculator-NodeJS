@@ -1,15 +1,16 @@
-const port = process.env.PORT || 3000;
 const readline = require('readline');
 const handler = require('./handler');
-var http = require('http');
-var bodyParser = require('body-parser');
-var express = require('express');
-var reload = require('reload');
+const http = require('http');
+const bodyParser = require('body-parser');
+const express = require('express');
+const reload = require('reload');
 const Joi = require('@hapi/joi');
+
 var app = express();
 var server = http.createServer(app);
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+const port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 app.set('port', port);
@@ -40,6 +41,27 @@ app.get('/search', function (req, res) {
 });
 
 
+app.post('/modify', urlencodedParser, function (req, res) {
+
+    //Not so good way to handle what do but...
+    if (req.body.Update == 'Update') {
+        handler.updateFood(req.body);
+        console.log("Food '" + req.body.foodname + "' updated.");
+    }
+    else if (req.body.Insert == 'Insert'){
+        handler.insertFood(req.body);
+        console.log("Food '" + req.body.foodname + "' inserted.");
+    }
+    else if (req.body.Delete == 'Delete'){      
+        handler.deleteFood(req.body.foodid);
+        console.log("Food '" + req.body.foodname + "' deleted.");
+    }
+  
+    //Load updated data.
+    var allFoodData = handler.getAllFoods();
+    res.render('nutritionCalculator', allFoodData);  
+})
+
 
 //Automaticly reloads web pages when saving server side code.
 reload(app).then(function (reloadReturned) {
@@ -53,14 +75,7 @@ reload(app).then(function (reloadReturned) {
   })
 
 
-/*
-app.post('/', urlencodedParser, function (req, res) {
-    
-    var data = handler.searchFood(req.body.search);
-    console.log(data);
-    res.render('nutritionCalculator', data);  
-})
-*/
+
 
 
 //https://www.youtube.com/watch?v=rin7gb9kdpk

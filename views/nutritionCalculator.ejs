@@ -59,7 +59,7 @@
 
                 <div class="search-form">
                     <h5>Search</h5>
-                    <form name="searchForm" action="/search" method="GET" onsubmit="return validateSearchForm()">
+                    <form name="searchForm" action="/search" method="GET">
                         <input type="text" name="search" required>
                         <input type="submit" value="Submit">
                     </form>                   
@@ -68,55 +68,57 @@
 
             <!--keskilohko-->
             <div class="col column">
-                <form name="addhForm" action="/add" method="POST">
-                    <table border="1">
+                <form name="addhForm" action="/modify" method="POST">
+                    <table border="0">
                         <tr>
                             <td>ID:</td>
-                            <td><input class="macroinput" type="text" id="foodid" disabled></td>
+                            <td><input class="macroinput" type="text" id="foodid" name="foodid"></td>
                         </tr>
                         <tr>
                             <td>Name:</td>
-                            <td><input type="text" id="foodname" required></td>
+                            <td><input type="text" id="foodname" name="foodname" required></td>
                         </tr>
                         <tr>
                             <td>Kcal:</td>
-                            <td><input class="macroinput" type="text" id="foodkcal" required> kcal</td>
+                            <td><input class="macroinput" type="text" id="foodkcal" name="foodkcal" required> kcal</td>
                         </tr>
                         <tr>
                             <td>Protein:</td>
-                            <td><input class="macroinput" type="text" id="foodprot" pattern="[0-9]{1,3}" required> g</td>
+                            <td><input class="macroinput" type="text" id="foodprot" pattern="[0-9]{1,3}" name="foodprot" required> g</td>
                         </tr>
                         <tr>
                             <td>Carbs:</td>
-                            <td><input class="macroinput" type="text" id="foodcarbs" pattern="[0-9]{1,3}" required> g</td>
+                            <td><input class="macroinput" type="text" id="foodcarbs" pattern="[0-9]{1,3}" name="foodcarbs" required> g</td>
                         </tr>
                         <tr>
                             <td>Fat:</td>
-                            <td><input class="macroinput" type="text" id="foodfat" pattern="[0-9]{1,3}" required> g</td>
+                            <td><input class="macroinput" type="text" id="foodfat" pattern="[0-9]{1,3}" name="foodfat" required> g</td>
                         </tr>
                         <tr>
                             <td>Saturated fat:</td>
-                            <td><input class="macroinput" type="text" id="foodsfat" pattern="[0-9]{1,3}" required> g</td>
+                            <td><input class="macroinput" type="text" id="foodsfat" pattern="[0-9]{1,3}" name="foodsfat" required> g</td>
                         </tr>
                         <tr>
                             <td>Category:</td>
                             <td>
-                                <select type="text" id="foodcategory">
-                                    <option>Ruoka</option>
-                                    <option>Juoma</option>
-                                    <option>Lisuke</option>
+                                <select type="text" id="foodcategory" name="foodcategory">
+                                    <option value="0">Ruoka</option>
+                                    <option value="1">Juoma</option>
+                                    <option value="2">Lisuke</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Info:</td>
-                            <td><textarea id="foodinfo" rows="4" cols="25"></textarea></td>
+                            <td><textarea id="foodinfo" rows="4" cols="25" name="foodinfo"></textarea></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
                                 <button type="reset" value="Reset" onclick="resetToAdd()">Add new</button>
-                                <input id="insertButton" disabled type="submit" value="Submit" onclick="insertFood()">
+                                <input id="insertButton" disabled type="submit" name="Insert" value="Insert">
+                                <input id="deleteButton" disabled type="submit" name="Delete" value="Delete">
+                                <input id="updateButton" disabled type="submit" name="Update" value="Update">
                             </td>
                         </tr>  
                     </table>

@@ -1,8 +1,12 @@
-
 const fileName = 'newFoodData.txt';
 const fs = require('fs')
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const data = fs.readFileSync(fileName) 
 const json = JSON.parse(data)
+
+var mongoose = require('mongoose');
+var Foods = require('./foodModel');
 
 const nutritions = json.foods
 
@@ -24,32 +28,40 @@ var searchFood = function(answer){
 }
 
 //Add new food item
-var addFood = function(newFood){
+var insertFood = function(newFood){
 
+    console.log(newFood);
     //Generate new id.
     var newId = Math.max.apply(Math, nutritions.map(function(o) { return o.id; })) + 1;
 
     var foodObject = {
         id: newId,
-        name: newFood
+        name: newFood.foodname,
+        kcal: parseInt(newFood.foodkcal),
+        prots: parseInt(newFood.foodprot),
+        carbs: parseInt(newFood.foodcarbs),
+        fat: parseInt(newFood.foodfat),
+        sfat: parseInt(newFood.foodsfat),
+        category: parseInt(newFood.foodcategory),
+        info: newFood.foodinfo
     }
-
+  
     //add new object to json array
     json.foods.push(foodObject)
 
-    fs.writeFile(fileName, JSON.stringify(json, null, 4), function (err) {  
+    fs.writeFile(fileName, JSON.stringify(json, null, 3), function (err) {  
         if (err) {
             console.log("error");
         }  
         else {
-            console.log("Ruoka " + newFood + " lisätty ja tiedosto päivitetty.");
+            console.log("Ruoka " + newFood.foodname + " lisätty ja tiedosto päivitetty.");
         }      
     });
 
 }
 
 //Update food data
-function updateFood (foodString){
+function updateFood(food){
 
     var foodString = foodString.split(",")
     var foodId = foodString[0]
@@ -73,6 +85,17 @@ function updateFood (foodString){
     }
 }
 
+function deleteFood(foodId){
+
+    for(var foodItem in nutritions) {
+        
+        if (json.foods[foodItem].id == parseInt(foodId)){
+            delete json.foods[foodItem];
+            updateJson(json)
+            break;
+        }
+    }
+}
 
 function updateJson(json){
 
@@ -89,5 +112,6 @@ function updateJson(json){
 
 module.exports.getAllFoods = getAllFoods
 module.exports.searchFood = searchFood
-module.exports.addFood = addFood
+module.exports.insertFood = insertFood
 module.exports.updateFood = updateFood
+module.exports.deleteFood = deleteFood
